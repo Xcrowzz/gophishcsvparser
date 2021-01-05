@@ -23,9 +23,8 @@ const onlyUnique = (value, index, self) => {
 
 const clearDupes = (hitMap) => {
 	const idMap = hitMap.map((e) => e[0]);
-
 	const unique = idMap.filter(onlyUnique);
-	console.log(unique);
+	console.log(unique); // Email List
 	return unique;
 }
 
@@ -41,15 +40,13 @@ const cleanBuff = (buff) => {
 }
 
 const start = () => {
-
 	csvToBuff().then((buff) => {
 		cleanBuff(buff).then((buff) => {
-			console.log(`New buffer length: ${buff.length}`);
+			console.log(`Mobile Hits: ${buff.length}`);
 		})
 	}).catch((e) => {
 		console.error(`Nope: ${e}`);
 	});
 }
-
 
 start();
