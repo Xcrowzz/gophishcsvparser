@@ -21,12 +21,7 @@ const onlyUnique = (value, index, self) => {
 	return self.indexOf(value) === index;
 }
 
-const clearDupes = (hitMap) => {
-	const idMap = hitMap.map((e) => e[0]);
-	const unique = idMap.filter(onlyUnique);
-	console.log(unique); // Email List
-	return unique;
-}
+const clearDupes = (hitMap) => hitMap.map((e) => e[0]).filter(onlyUnique);
 
 const cleanBuff = (buff) => {
 	return new Promise(async (resolve) => {
@@ -42,7 +37,7 @@ const cleanBuff = (buff) => {
 const start = () => {
 	csvToBuff().then((buff) => {
 		cleanBuff(buff).then((buff) => {
-			console.log(`Mobile Hits: ${buff.length}`);
+			console.log(`Unique mobile hits: ${buff.length}`);
 		})
 	}).catch((e) => {
 		console.error(`Nope: ${e}`);
